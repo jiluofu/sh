@@ -1,0 +1,2 @@
+open "smb://username:passwd@share/IMP0NEW"
+open "smb://username:passwd@share/imgs"
