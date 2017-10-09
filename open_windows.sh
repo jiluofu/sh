@@ -1,0 +1,9 @@
+open ~/Documents/sh/
+open ~/Desktop/mmjswork/gif/
+open ~/Desktop/mmjswork/frame/
+open ~/Desktop/mmjswork/video/
+open ~/Documents/mmjstool/write/art/draft/img/
+open ~/Pictures/lr/videos/
+open ~/Pictures/lr/photos/
+open ~/Pictures/lr/catalog/
+open ~/百度云同步盘/Photos/awaken/
