@@ -7,12 +7,12 @@ x=0
 rm -rf $1/output
 mkdir $1/output
 
-for f in *.mp4;
+for f in *.MP4 *.MOV;
 do echo "file '$PWD/$f'";
 ffmpeg -y -r 29 -i $PWD/$f -vcodec mpeg4 -b:v 2184000 -ab 128000 -s 544*960 $1/tmp_$f
 done
 
-ffmpeg -y -f concat -safe 0 -i <(for f in tmp_*.mp4; do echo "file '$PWD/$f'"; done) -c copy $1/output/all.mp4
+ffmpeg -y -f concat -safe 0 -i <(for f in tmp_*.MP4 tmp_*.MOV; do echo "file '$PWD/$f'"; done) -c copy $1/output/all.mp4
 
 rm -rf tmp_*
 

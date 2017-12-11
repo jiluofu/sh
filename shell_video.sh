@@ -16,7 +16,7 @@ bv=600k
 
 
 
-for i in $1/*.mp4
+for i in $1/*.mp4 *.MOV
 do
 
 ffmpeg -y -r $fps -i $i  -vcodec mpeg4 -s $width*$height -b:v $bv output/$i
