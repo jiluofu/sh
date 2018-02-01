@@ -1,0 +1,14 @@
+ffmpeg -i "concat:0101a.mp3|0101b.mp3|0101c.mp3" -acodec copy output.mp3
+
+1. 把所有的wma转成*.wma.mp3
+find . -type f -name "*.wma"|xargs -I {} ffmpeg -i {} {}.mp3
+
+2. 把所有wma.mp3改名为mp3
+find . -name '*.wma.mp3'| awk -F "." '{print $2}'|xargs -I {} mv .{}.wma.mp3 .{}.mp3
+
+3. 遍历所有a.mp3，获取日期名，把abc连接起来
+find . -name '*a.mp3'| awk -F "a." '{print $1}'|xargs -I {} ffmpeg -i "concat:{}a.mp3|{}b.mp3|{}c.mp3" -acodec copy {}_all.mp3
+
+4. 处理mp3的id3tag的gbk问题
+pip install mutagen
+mid3iconv -e gbk *.mp3
