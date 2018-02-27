@@ -12,9 +12,9 @@ for i in $1/*.jpg
 do
 # x计数器自增
 x=`expr $x + 1`
-# 设定3位数长度的数字
-num=$((1000+$x))
-# 截掉开头的1，保持数字都是3位
+# 设定4位数长度的数字
+num=$((10000+$x))
+# 截掉开头的1，保持数字都是4位
 num=${num:1}
 
 # 图片改名复制到output
@@ -29,13 +29,13 @@ width=1240
 height=700
 
 # fps
-fps=10
+fps=7
 
 # 视频码率bit/s
 bv=3000k
 
 # 图片合成视频，用于计算视频时长
-ffmpeg -y -r $fps  -i ./$1/output/image%3d.jpg -vcodec mpeg4 -b:v $bv ./$1/output/output.mp4
+ffmpeg -y -r $fps  -i ./$1/output/image%4d.jpg -vcodec mpeg4 -b:v $bv ./$1/output/output.mp4
 
 # 获取视频的秒数
 video_secs=`ffprobe -i ./$1/output/output.mp4 -show_entries stream=codec_type,duration -of compact=p=0:nk=1|grep video`
