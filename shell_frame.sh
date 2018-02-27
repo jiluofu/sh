@@ -32,7 +32,7 @@ height=700
 fps=7
 
 # 视频码率bit/s
-bv=3000k
+bv=6000k
 
 # 图片合成视频，用于计算视频时长
 ffmpeg -y -r $fps  -i ./$1/output/image%4d.jpg -vcodec mpeg4 -b:v $bv ./$1/output/output.mp4
@@ -86,7 +86,7 @@ fi
 # 合并音频和视频，生成最终的视频
 # 音频和视频分别进行淡入和淡出
 # ffmpeg -y -r $fps -i ./$1/bg_cut_final.mp3  -i ./$1/output/image%3d.jpg -af 'afade=t=in:ss=0:d='$fade_len',afade=t=out:st='$st':d='$fade_len -vf 'fade=t=in:st=0:d='$fade_len',fade=t=out:st='$st':d='$fade_len -vcodec mpeg4 -s $width*$height -b:v $bv ./$1/output/final.mp4
-ffmpeg -y -r $fps -i ./$1/bg_cut_final.mp3  -i ./$1/output/output.mp4 -af 'afade=t=in:ss=0:d='$fade_len',afade=t=out:st='$st':d='$fade_len -vf 'fade=t=out:st='$st':d='$fade_len -vcodec mpeg4 -b:v $bv ./$1/output/final.mp4
+ffmpeg -y -r $fps -i ./$1/bg_cut_final.mp3  -i ./$1/output/output.mp4 -af 'afade=t=in:ss=0:d='$fade_len',afade=t=out:st='$st':d='$fade_len -vf 'fade=t=out:st='$st':d='$fade_len -vcodec mpeg4 -b:v $bv -s $width*$height ./$1/output/final.mp4
 
 # 第1张图作封面
 # atomicparsley ./$1/output/final.mp4 --artwork ./$1/image001.jpg
