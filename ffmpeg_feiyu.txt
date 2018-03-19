@@ -17,3 +17,4 @@ mid3iconv -e gbk *.mp3
 剪辑视频不压缩
 ffmpeg -y -i xxx.mp4 -r 25 -ss 00:00:12 -to 00:00:20  xxx_cut.mp4
 ffmpeg -y -i 20180301_俏花旦.mp4 -r 25 -ss 00:37:52 -to 00:42:06  20180301_俏花旦_cut.mp4
+ffmpeg -y -i 20180301_俏花旦.mp4 -ss 00:00:31 -to 00:03:55  -c:a libmp3lame -ac 2 -b:a 128k 20180301_俏花旦.mp3
