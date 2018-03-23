@@ -18,11 +18,13 @@ wget -O $output/$name $url
 weather_name=$time"_weather.mp4"
 echo $weather_name
 
-ffmpeg -y -i $output/$name -ss 00:31:50 -to 00:36:30 -acodec copy $output/$weather_name
+ffmpeg -y -i $output/$name -ss 00:29:50 -to 00:40:30 -acodec copy $output/$weather_name
 rm -rf $output/$name
 
 weather_file_name=$time"_专家聊天气.mp3"
+weather_file_name_wav=$time"_专家聊天气.wav"
 ffmpeg -y -i $output/$weather_name  -f mp3 -vn $output/$weather_file_name
+ffmpeg -y -i $output/$weather_name  -f wav -vn $output/$weather_file_name_wav
 rm -rf $output/$weather_name
 
  
