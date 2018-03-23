@@ -23,7 +23,7 @@ rm -rf $output/$name
 
 weather_file_name=$time"_专家聊天气.mp3"
 weather_file_name_wav=$time"_专家聊天气.wav"
-ffmpeg -y -i $output/$weather_name  -f mp3 -vn $output/$weather_file_name
+# ffmpeg -y -i $output/$weather_name  -f mp3 -vn $output/$weather_file_name
 ffmpeg -y -i $output/$weather_name  -f wav -vn $output/$weather_file_name_wav
 rm -rf $output/$weather_name
 
