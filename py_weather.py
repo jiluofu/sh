@@ -39,19 +39,19 @@ def getWeather(date):
 	a = subprocess.check_output('sox ' + path + '/' + date + '_专家聊天气.wav ' + path + '/tianqi_clean.wav noisered ' + path + '/noise.prof 0.3', shell=True)
 	a = subprocess.check_output('aubioquiet ' + path + '/tianqi_clean.wav', shell=True)
 
-	# print(str(a))
+	print(str(a))
 	out = []
 	pos = re.findall(r"NOISY: ([\d\.]{1,})", str(a))
 	for i in range(0, len(pos)):
 		sec = float(pos[i])
 		if i > 0:
-			if sec - float(pos[i - 1]) >= 10 and sec - float(pos[i - 1]) <= 13:
+			if sec - float(pos[i - 1]) >= 10 and sec - float(pos[i - 1]) <= 14:
 				print(sec)
 				print(sec - float(pos[i - 1]))
 				out.append(str(sec))
 
 	for i in range(0, len(out)):
-		subprocess.check_output('ffmpeg -y -i ' + path + '/' + date + '_专家聊天气.wav -ss ' + out[i] + ' -to ' + str(float(out[i]) + 100) + '  -f wav ' + path + '/wout/' + date + '_专家聊天气' + str(i) + '.wav', shell=True)
+		subprocess.check_output('ffmpeg -y -i ' + path + '/' + date + '_专家聊天气.wav -ss ' + out[i] + ' -to ' + str(float(out[i]) + 200) + '  -f wav ' + path + '/wout/' + date + '_专家聊天气' + str(i) + '.wav', shell=True)
 		if i == 1:
 			break
 
