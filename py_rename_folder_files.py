@@ -24,10 +24,16 @@ def copyName(srcPath, targetPath):
 		if srcPre != targetPre:
 			print(srcPre + '不一致')
 			break
-		os.rename(targetPath + os.path.sep + targetArr[i], targetPath + os.path.sep + srcArr[i])
-		print(targetPath + os.path.sep + srcArr[i])
+		newTargetPath = targetPath + os.path.sep + srcArr[i]
+		newTargetPath = newTargetPath.replace('.srt', '.mkv')
+		os.rename(targetPath + os.path.sep + targetArr[i], newTargetPath)
+		# print(newTargetPath)
 
-copyName(srcPath, targetPath)
+# copyName('g:\\[老友记].friends\\srt6', 'g:\\[老友记].friends\\Friends.S06')
+# copyName('g:\\[老友记].friends\\srt7', 'g:\\[老友记].friends\\Friends.S07')
+copyName('g:\\[老友记].friends\\srt8', 'g:\\[老友记].friends\\Friends.S08')
+# copyName('g:\\[老友记].friends\\srt9', 'g:\\[老友记].friends\\Friends.S09')
+# copyName('g:\\[老友记].friends\\srt10', 'g:\\[老友记].friends\\Friends.S10')
 
 
 
