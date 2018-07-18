@@ -68,31 +68,12 @@ def getMFCC(fileName, start = 0, len = None):
 
 def getDistance(model, sample):
 	
-	#print(model)
-	#print(sample)
-	
-	#Loading audio files
 	y1, sr1 = librosa.load(model) 
 	y2, sr2 = librosa.load(sample) 
-
-	#Showing multiple plots using subplot
-	# plt.subplot(1, 2, 1) 
-	mfcc1 = librosa.feature.mfcc(y1,sr1)   #Computing MFCC values
-	# librosa.display.specshow(mfcc1)
-
-	# plt.subplot(1, 2, 2)
+	mfcc1 = librosa.feature.mfcc(y1,sr1)
 	mfcc2 = librosa.feature.mfcc(y2,sr2)
-	# librosa.display.specshow(mfcc2)
-
-	# dist, cost, path = dtw(mfcc1.T, mfcc2.T)
 	dist, cost, acc_cost, path = dtw(mfcc1.T, mfcc2.T, dist=lambda x, y: norm(x - y, ord=1))
-	print("****The normalized distance between the two : ",dist)   # 0 for similar audios 
-
-	# plt.imshow(cost.T, origin='lower', cmap=plt.get_cmap('gray'), interpolation='nearest')
-	# plt.plot(path[0], path[1], 'w')   #creating plot for DTW
-
-	# plt.show()  #To display the plots graphically
-
+	print("****The normalized distance between the two : ",dist)   
 	return dist
 
 def getDist(mfcc1, mfcc2):
@@ -150,67 +131,115 @@ def getSecPosPrecise(date, modelMFCC, sec, modelSecLength, dist):
 
 	return distDict[distMin]
 
-def getSecPos(date, title, modelMFCC, modelName, modelSecLength, searchStart = 0, searchEnd = 100):
+# def getSecPos(date, title, modelMFCC, modelName, modelSecLength, searchStart = 0, searchEnd = 100):
+
+	
+# 	distArr = []
+# 	distDict = {}
+
+# 	stopAfterNum = 2
+# 	closeToTarget = False
+
+	
+
+# 	for i in range(searchStart, searchEnd, int(modelSecLength / 2)):
+		
+# 		# sampleName = path + '/wout/' + date + '_' + title + str(i) + '.wav'
+# 		# subprocess.check_output('ffmpeg -y -i ' + path + '/' + date + '_专家聊天气.wav -ss ' + str(i) + ' -to ' + str(i + modelSecLength) + '  -f wav ' + sampleName, shell=True)
+# 		# dist = getDistance(modelName, sampleName)
+		
+# 		sampleName = path + '/' + date + '_专家聊天气.wav'
+# 		mfccSam = getMFCC(sampleName, i, modelSecLength)
+# 		dist = getDist(mfccSam, modelMFCC)
+# 		if dist < 0:
+# 			break
+			
+
+# 		distArr.append(dist)
+# 		distDict[dist] = i
+# 		# print(min(distArr))
+# 		print('sec:' + str(i) + ',dist:' + str(dist))
+# 		if int(min(distArr)) < 80:
+# 			print('***' + str(int(min(distArr))))
+# 			closeToTarget = True
+# 			break;
+# 		if closeToTarget:
+# 			if stopAfterNum == 0:
+# 				break
+# 			else:
+# 				stopAfterNum = stopAfterNum - 1
+
+# 	distMin = min(distArr)
+# 	print('min dist:' + str(distMin))
+# 	print('min sec:' + str(distDict[distMin]))
+# 	secPrecise = getSecPosPrecise(date, modelMFCC, distDict[distMin], modelSecLength, distMin)
+# 	if secPrecise > 0:
+# 		return secPrecise
+# 	else:
+# 		return distDict[distMin]
+
+# 	#a = subprocess.check_output('rm -rf ' + path + '/wout/*', shell=True)
+# 	return distDict[distMin]
+
+def getSecPosSerial(date, title, modelMFCC, modelSecLength, searchStart = 0, searchEnd = 600):
 
 	
 	distArr = []
 	distDict = {}
 
-	stopAfterNum = 2
-	closeToTarget = False
-
-	
-
-	for i in range(searchStart, searchEnd, int(modelSecLength / 2)):
+	for i in range(searchStart, searchEnd, int(modelSecLength / 3)):
 		
-		# sampleName = path + '/wout/' + date + '_' + title + str(i) + '.wav'
-		# subprocess.check_output('ffmpeg -y -i ' + path + '/' + date + '_专家聊天气.wav -ss ' + str(i) + ' -to ' + str(i + modelSecLength) + '  -f wav ' + sampleName, shell=True)
-		# dist = getDistance(modelName, sampleName)
-		
+		if i + modelSecLength > secs:
+			break;
+
 		sampleName = path + '/' + date + '_专家聊天气.wav'
 		mfccSam = getMFCC(sampleName, i, modelSecLength)
 		dist = getDist(mfccSam, modelMFCC)
 		if dist < 0:
 			break
-			
 
 		distArr.append(dist)
 		distDict[dist] = i
-		# print(min(distArr))
-		print('sec:' + str(i) + ',dist:' + str(dist))
+
 		if int(min(distArr)) < 80:
 			print('***' + str(int(min(distArr))))
-			closeToTarget = True
-			break;
-		if closeToTarget:
-			if stopAfterNum == 0:
-				break
-			else:
-				stopAfterNum = stopAfterNum - 1
+			return i
+
+		print('sec:' + str(i) + ',dist:' + str(dist))
+		
 
 	distMin = min(distArr)
 	print('min dist:' + str(distMin))
 	print('min sec:' + str(distDict[distMin]))
-	secPrecise = getSecPosPrecise(date, modelMFCC, distDict[distMin], modelSecLength, distMin)
-	if secPrecise > 0:
-		return secPrecise
-	else:
-		return distDict[distMin]
-
-	#a = subprocess.check_output('rm -rf ' + path + '/wout/*', shell=True)
+	
 	return distDict[distMin]
+
+def trim(str):
+    pattern = r'(^([\s])+)|(([\s])+$)'
+    res = re.sub(pattern, '', str)
+    return res;
 
 def getWeather(date):
 
-	# a = subprocess.check_output('./shell_down_weather.sh ' + date, shell=True)
+	audioFile = path + '/' + date + '_专家聊天气.wav'
+	res = subprocess.check_output('ffprobe -i ' + audioFile + ' -show_entries stream=codec_type,duration -of compact=p=0:nk=1|grep audio', shell=True)
+	res = trim(res.decode())
+	res = res.split('|')
+	global secs
+	secs = int(float(res[1]))
+	print('secs:' + str(secs))
+
 	a = subprocess.check_output('rm -rf ' + path + '/wout/*', shell=True)
 
-	secZj = getSecPos(date, '专家聊天气', mfccZJ, 12, 0, 600)
-	secFinish = getSecPos(date, '专家聊天气', mfccFIN, 7, secZj, secZj + 500)
-	if secFinish > secZj and (secFinish - secZj - 10 > 100):
-		output(date, secZj, secFinish - secZj - 10, '专家聊天气')
-	else:
-		output(date, secZj, 350, '专家聊天气')
+	secZj = getSecPosSerial(date, '专家聊天气', mfccZJ, 12, 0, secs)
+	secFinish = getSecPosSerial(date, '专家聊天气', mfccFIN, 7, secZj, secs)
+	print('secZj:' + str(secZj))
+	print('secFinish:' + str(secFinish))
+	output(date, secZj, secFinish - secZj - 10, '专家聊天气')
+	# if secFinish > secZj and (secFinish - secZj - 10 > 100):
+	# 	output(date, secZj, secFinish - secZj - 10, '专家聊天气')
+	# else:
+	# 	output(date, secZj, 350, '专家聊天气')
 	
 def output(date, secStart, secLength, name):
 
@@ -224,7 +253,7 @@ def output(date, secStart, secLength, name):
 	
 start = time.clock()
 # 天气开始
-mfccTQ = getMFCC(shellPath + '/model_tq.wav')
+# mfccTQ = getMFCC(shellPath + '/model_tq.wav')
 # 专家开始
 mfccZJ = getMFCC(shellPath + '/model_zhuanjia.wav')
 # 专家结束

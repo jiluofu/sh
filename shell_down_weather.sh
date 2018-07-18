@@ -30,7 +30,7 @@ echo $name
 wget -O $output/$name $url
 weather_name=$time"_weather.mp4"
 echo $weather_name
-ffmpeg -y -i $output/$name -ss 00:31:00 -to 00:38:30 -acodec copy $output/$weather_name
+ffmpeg -y -i $output/$name -ss 00:27:00 -to 00:42:30 -acodec copy $output/$weather_name
 
 
 rm -rf $output/$name
