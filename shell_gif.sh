@@ -7,10 +7,10 @@ cd $1
 find . -type f -name "*.jpg"|xargs -I {} convert -resize 300x300 {} output/{}
 echo "compress photos"
 cd output
-find . -type f -name "*.jpg"|xargs -I {} jpegoptim  -m90 {}
+# find . -type f -name "*.jpg"|xargs -I {} jpegoptim  -m90 {}
 
 convert *.jpg ani.gif
 rm *.jpg
-ffmpeg -i ani.gif -vcodec mpeg4  -b:v 818400 ani.mp4
+ffmpeg -i ani.gif -vcodec mpeg4  -b:v 2000k ani.mp4
 
 
