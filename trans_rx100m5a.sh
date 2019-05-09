@@ -1,7 +1,7 @@
 ls_date=`date +%Y%m%d_%H%M%S`
 echo $ls_date
 
-src_dir="/Volumes/RX100M5A/DCIM/100MSDCF"
+src_dir="/Volumes/RX100M5A/DCIM/101MSDCF"
 video_src_dir="/Volumes/RX100M5A/PRIVATE/M4ROOT/CLIP"
 
 pic_dir="/Users/zhuxu/Pictures/lr/photos"
