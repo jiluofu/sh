@@ -19,7 +19,8 @@ bv=600k
 for i in $1/*.mp4 *.MOV
 do
 
-ffmpeg -y -r $fps -i $i  -vcodec mpeg4 -s $width*$height -b:v $bv output/$i
+# ffmpeg -y -r $fps -i $i  -vcodec mpeg4 -s $width*$height -b:v $bv output/$i
+ffmpeg -i $i -c copy -c:v libx264 -vf scale=-2:720 output/$i
 
 done
 

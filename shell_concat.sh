@@ -14,7 +14,7 @@ done
 
 ffmpeg -y -f concat -safe 0 -i <(for f in tmp_*.MP4 tmp_*.MOV; do echo "file '$PWD/$f'"; done) -c copy $1/output/all.mp4
 
-rm -rf tmp_*
+# rm -rf tmp_*
 
 
 
