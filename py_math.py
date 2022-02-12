@@ -70,10 +70,43 @@ def gen_q():
     elif runType == 'money_minus':
         return money_minus(a1, a2)
 
+def mul_2(a1, a2):
+    
+    str = '{} * (   ) = {}'.format(a1, a1*a2)
+    return str
+
+def gen_mul():
+    
+    dict_a1 = get_a1()
+    while dict_a1['bit_a1'] == 9:
+        dict_a1 = get_a1()
+
+    a1 = dict_a1['a1']
+    bit_a1 = dict_a1['bit_a1']
+    dec_a1 = dict_a1['dec_a1']
+    
+    if bit_a1 == 0:
+        bit_a2 = random.randrange(bit_a1, 10)
+    else:
+        bit_a2 = random.randrange(bit_a1 + 1, 10)
+
+    if dec_a1 == 0:
+        dec_a2 = random.randrange(0, dec_a1)
+    else:
+        dec_a2 = random.randrange(0, dec_a1 - 1)
+    a2 = dec_a2 * 10 + bit_a2
+
+    return mul_2(a1,a2)
+    # if runType == 'minus':
+    #     return minus_2(a1, a2)
+    # elif runType == 'money_minus':
+    #     return money_minus(a1, a2)
+
 def render():
     lines = []
-    for i in range(30):
-        lines.append(gen_q())
+    for i in range(33):
+        # lines.append(gen_q())
+        lines.append(gen_mul())
     random.shuffle(lines)  
     
     return lines  

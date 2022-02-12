@@ -17,4 +17,4 @@ ffmpeg -y -i "concat:jd_sample_fade.mp3|br_sample_fade.mp3" -acodec copy jd_br.m
 # 删除输出目录，重建
 rm -rf $1/output
 mkdir $1/output
-ffmpeg -y -i $output/$name -ss 00:27:00 -to 00:42:30 -acodec copy $output/$weather_name
+ffmpeg -y -i $output/$name -ss 00:48:45 -to 00:50:55 -acodec copy $output/$weather_name

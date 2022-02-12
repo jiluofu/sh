@@ -11,6 +11,6 @@ cd output
 
 convert *.jpg ani.gif
 rm *.jpg
-ffmpeg -i ani.gif -vcodec mpeg4  -b:v 2000k ani.mp4
+ffmpeg -i ani.gif -vcodec mpeg4  -b:v 20M ani.mp4
 
 
