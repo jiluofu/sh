@@ -1,0 +1,1 @@
+ffmpeg -i "https://1252524126.vod2.myqcloud.com/9764a7a5vodtransgzp1252524126/d6a922653701925923093491553/drm/v.f421220.m3u8" -vcodec copy -acodec copy -absf aac_adtstoasc output.mp4
