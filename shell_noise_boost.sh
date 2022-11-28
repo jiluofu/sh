@@ -8,7 +8,7 @@ mkdir $1/output1
 for i in $1/*.WAV
 do
 
-ffmpeg -y -i $i -filter:a "volume=1dB" $1/output1/$i
+ffmpeg -y -i $i -filter:a "volume=20dB" $1/output1/$i
 
 ffmpeg -y -i $1/output1/$i -ss 00:00:00.70 -t 00:00:01.10 noiseSample.wav
 
