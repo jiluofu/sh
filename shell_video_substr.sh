@@ -28,14 +28,20 @@ bv=6000k
 # ffmpeg -y -i cheap_thrills.mp4 -ss 00:01:20 -t 00:01:28  -vcodec mpeg4 -b:v 3000k cheap_thrills_10.mp4
 
 
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:00 -t 00:00:17  -vcodec mpeg4 -b:v 3000k cheap_thrills_01.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:16 -t 00:00:06  -vcodec mpeg4 -b:v 3000k cheap_thrills_02.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:22 -t 00:00:05  -vcodec mpeg4 -b:v 3000k cheap_thrills_03.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:26 -t 00:00:12  -vcodec mpeg4 -b:v 3000k cheap_thrills_04.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:38 -t 00:00:11  -vcodec mpeg4 -b:v 3000k cheap_thrills_05.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:48 -t 00:00:06  -vcodec mpeg4 -b:v 3000k cheap_thrills_06.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:54 -t 00:00:06  -vcodec mpeg4 -b:v 3000k cheap_thrills_07.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:01:00 -t 00:00:10  -vcodec mpeg4 -b:v 3000k cheap_thrills_08.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:01:09 -t 00:00:11  -vcodec mpeg4 -b:v 3000k cheap_thrills_09.mp4
-ffmpeg -y -i cheap_thrills.mp4 -ss 00:01:20 -t 00:00:08  -vcodec mpeg4 -b:v 3000k cheap_thrills_10.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:00 -t 00:00:17  -vcodec mpeg4 -b:v 3000k cheap_thrills_01.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:16 -t 00:00:06  -vcodec mpeg4 -b:v 3000k cheap_thrills_02.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:22 -t 00:00:05  -vcodec mpeg4 -b:v 3000k cheap_thrills_03.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:26 -t 00:00:12  -vcodec mpeg4 -b:v 3000k cheap_thrills_04.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:38 -t 00:00:11  -vcodec mpeg4 -b:v 3000k cheap_thrills_05.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:48 -t 00:00:06  -vcodec mpeg4 -b:v 3000k cheap_thrills_06.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:00:54 -t 00:00:06  -vcodec mpeg4 -b:v 3000k cheap_thrills_07.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:01:00 -t 00:00:10  -vcodec mpeg4 -b:v 3000k cheap_thrills_08.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:01:09 -t 00:00:11  -vcodec mpeg4 -b:v 3000k cheap_thrills_09.mp4
+# ffmpeg -y -i cheap_thrills.mp4 -ss 00:01:20 -t 00:00:08  -vcodec mpeg4 -b:v 3000k cheap_thrills_10.mp4
+
+
+ffmpeg -y -ss 00:00:09 -i $1/20221130_h.mp4 -t 00:02:11 -c:v libx264 -c:a aac  20221130_h_out.mp4
+
+
+
 
