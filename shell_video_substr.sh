@@ -40,7 +40,7 @@ bv=6000k
 # ffmpeg -y -i cheap_thrills.mp4 -ss 00:01:20 -t 00:00:08  -vcodec mpeg4 -b:v 3000k cheap_thrills_10.mp4
 
 
-ffmpeg -y -ss 00:00:09 -i $1/20221130_h.mp4 -t 00:02:11 -c:v libx264 -c:a aac  20221130_h_out.mp4
+ffmpeg -y -ss 00:00:21 -i $1/C0163.MP4 -t 00:02:54 -c:v libx264 -c:a aac  C0163_out.mp4
 
 
 
