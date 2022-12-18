@@ -6,7 +6,7 @@ mkdir $1/output
 for i in $1/*.WAV
 do
 
-ffmpeg -y -i $i -ab 320k $1/output/echo ${i%.*}.m4a
+ffmpeg -y -i $i -ab 320k $1/output/${i%.*}.m4a
 
 
 done

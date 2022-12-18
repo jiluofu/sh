@@ -10,7 +10,7 @@ do
 
 ffmpeg -y -i $i -filter:a "volume=9dB" $1/output1/$i
 
-ffmpeg -y -ss 00:00:03 -to 00:08:17 -i $1/output1/$i $1/output/$i
+ffmpeg -y -ss 00:00:03 -to 00:03:07 -i $1/output1/$i $1/output/$i
 # ffmpeg -y -ss 00:00:03 -to 00:08:17 -i $1/output1/$i -ab 320k $1/output/${i%.*}.m4a
 
 # sox $1/noiseSample.wav -n noiseprof noisepf.prof
