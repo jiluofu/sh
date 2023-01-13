@@ -10,7 +10,7 @@ do
 
 ffmpeg -y -i $i -filter:a "volume=1dB" $1/output1/$i
 
-ffmpeg -y -i $1/output1/$i -ss 00:00:00.70 -t 00:00:01.70 noiseSample.wav
+ffmpeg -y -i $1/output1/$i -ss 00:00:00.70 -t 00:00:02.70 noiseSample.wav
 
 sox $1/noiseSample.wav -n noiseprof noisepf.prof
 sox $1/output1/$i $1/output/$i noisered noisepf.prof 0.21
