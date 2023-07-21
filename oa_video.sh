@@ -10,7 +10,7 @@ mkdir $1/output
 for f in *.MP4;
 do echo "file '$PWD/$f'";
 # ffmpeg -y -i $PWD/$f -vcodec libx264 -b:v 20000k -s 1920*1080 $1/tmp_$f
-ffmpeg -y -i $PWD/$f -c:v libx264 -preset veryfast -b:v 20M -vf scale=-2:1080 $1/1k_$f
+ffmpeg -y -i $PWD/$f -c:v libx264 -preset ultrafast -b:v 19000k $1/1k_$f
 done
 
 # ffmpeg -y -f concat -safe 0 -i <(for f in tmp_*.MP4; do echo "file '$PWD/$f'"; done) -c copy $1/output/all.mp4
