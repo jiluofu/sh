@@ -10,11 +10,7 @@
 for f in *.MP4;
 do echo "file '$PWD/$f'";
 # ffmpeg -y -i $PWD/$f -vcodec libx264 -b:v 20000k -s 1920*1080 $1/tmp_$f
-<<<<<<< HEAD
 ffmpeg -y -i $PWD/$f -c:v libx264 -preset ultrafast -b:v 12020k -vf scale=-2:1080 $1/1k_$f
-=======
-ffmpeg -y -i $PWD/$f -c:v libx264 -preset ultrafast -b:v 19000k $1/1k_$f
->>>>>>> 2355b63b02b8626fc4c6cbdd88355cd7b833b909
 done
 
 # ffmpeg -y -f concat -safe 0 -i <(for f in tmp_*.MP4; do echo "file '$PWD/$f'"; done) -c copy $1/output/all.mp4
