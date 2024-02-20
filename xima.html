@@ -41,12 +41,12 @@ function run(argument) {
 	pre = document.getElementById('pre').value;
 	
 	r = c.split('\n')
-	count = 108;
+	count = 1;
 	cmd = '';
 	
 	for (var i = 0; i < r.length; i++) {
 		
-		cmd += 'curl -H "Host: audiopay.cos.tx.xmcdn.com" -H "sec-ch-ua: \\"Chromium\\";v=\\"112\\", \\"Google Chrome\\";v=\\"112\\", \\"Not:A-Brand\\";v=\\"99\\"" -H "sec-ch-ua-mobile: ?0" -H "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" -H "sec-ch-ua-platform: \\"macOS\\"" -H "accept: */*" -H "sec-fetch-site: cross-site" -H "sec-fetch-mode: no-cors" -H "sec-fetch-dest: audio" -H "referer: https://www.ximalaya.com/" -H "accept-language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7,ja;q=0.6,pt;q=0.5,hmn;q=0.4" -H "range: bytes=0-" --output "' + fix(count, 3) + '..m4a" "' + r[i] + '" \n';
+		cmd += 'curl -H "Host: audiopay.cos.tx.xmcdn.com" -H "sec-ch-ua: \\"Chromium\\";v=\\"112\\", \\"Google Chrome\\";v=\\"112\\", \\"Not:A-Brand\\";v=\\"99\\"" -H "sec-ch-ua-mobile: ?0" -H "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" -H "sec-ch-ua-platform: \\"macOS\\"" -H "accept: */*" -H "sec-fetch-site: cross-site" -H "sec-fetch-mode: no-cors" -H "sec-fetch-dest: audio" -H "referer: https://www.ximalaya.com/" -H "accept-language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7,ja;q=0.6,pt;q=0.5,hmn;q=0.4" -H "range: bytes=0-" --output "' + fix(count, 3) + '.m4a" "' + r[i] + '" \n';
 		cmd += ''
 		cmd += 'sleep 1\n';
 		count ++;
