@@ -3,10 +3,10 @@
 rm -rf $1/output
 mkdir $1/output
 
-for i in $1/*.m4a
+for i in *.mp3
 do
-
-ffmpeg -y -i $i -filter:a "volume=9dB" $1/output/$i
+echo $i
+ffmpeg -y -i $i -filter:a "volume=6dB" -codec:a libmp3lame -q:a 0 -b:a 160k $1/output/$i
 done
 
 
