@@ -1,0 +1,15 @@
+
+ffmpeg -i The.Pig.the.Snake.and.the.Pigeon.2023.1080p.NF.WEB-DL.DDP5.1.H264-BATWEB.mkv -ss 00:00:00 -to 00:09:21 -map 0:v -map 0:a -map 0:s -c:v copy -c:a copy -c:s mov_text -map_chapters -1 segment_scroll0.mp4
+
+ffmpeg -i The.Pig.the.Snake.and.the.Pigeon.2023.1080p.NF.WEB-DL.DDP5.1.H264-BATWEB.mkv -ss 00:10:19 -to 00:39:59 -c:v copy -c:a copy -copyts -map 0 segment_scroll1.mkv
+
+ffmpeg -i The.Pig.the.Snake.and.the.Pigeon.2023.1080p.NF.WEB-DL.DDP5.1.H264-BATWEB.mkv -ss 00:42:36 -to 00:49:35 -c:v copy -c:a copy -copyts -map 0 segment_scroll2.mkv
+
+ffmpeg -i The.Pig.the.Snake.and.the.Pigeon.2023.1080p.NF.WEB-DL.DDP5.1.H264-BATWEB.mkv -ss 00:53:48 -to 00:59:13 -c:v copy -c:a copy -copyts -map 0 segment_scroll3.mkv
+
+ffmpeg -i The.Pig.the.Snake.and.the.Pigeon.2023.1080p.NF.WEB-DL.DDP5.1.H264-BATWEB.mkv -ss 00:59:55 -to 02:13:37 -c:v copy -c:a copy -copyts -map 0 segment_scroll4.mkv
+
+
+
+
+ffmpeg -f concat -i filelist.txt -c copy output.mkv
