@@ -3,6 +3,11 @@
 rm -rf $1/output
 mkdir $1/output
 
+rm -rf *.xml
+~/Documents/sh/shell_cleanname.sh $1
+~/Documents/sh/shell_namenumber.sh $1
+
+
 counter=1
 for i in *.mp4
 do
