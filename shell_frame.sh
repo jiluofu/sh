@@ -25,14 +25,14 @@ done
 # 视频宽高
 # width=480
 # height=320
-width=1240
-height=700
+width=1920
+height=1080
 
 # fps
 fps=7
 
 # 视频码率bit/s
-bv=6000k
+bv=9000k
 
 # 图片合成视频，用于计算视频时长
 ffmpeg -y -r $fps  -i ./$1/output/image%4d.jpg -vcodec mpeg4 -b:v $bv ./$1/output/output.mp4

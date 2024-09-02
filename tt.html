@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<form >
+	<textarea id="pre" style="width:400px;height:100px;"></textarea>
+	<br>
+	<textarea id="content" style="width:400px;height:400px;"></textarea>
+	
+	<input type="button" name="" value="sid" onclick="run();">
+</form>
+<body>
+
+</body>
+</html>
+<script>
+function fix(num, length) {
+return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+}
+function run(argument) {
+	
+	cmd = ''
+	len = 990
+	for (var i = 1; i <= len; i++) {
+		
+		cmd += 'wget "https://xx.ts" --no-check-certificate -O  '+i.toString().padStart(3, '0')+'.ts \n';
+		// cmd += 'sleep 1\n';
+	}
+
+
+
+	document.getElementById('content').value = cmd;
+
+}
+
+</script>
