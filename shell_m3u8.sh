@@ -1,1 +1,1 @@
-ffmpeg -i "https://vodtest1.cretech.cn/10C201_00093F/index.m3u8" -vcodec copy -acodec copy -absf aac_adtstoasc output.mp4
+ffmpeg -i "" -vcodec copy -acodec copy -absf aac_adtstoasc output.mp4
