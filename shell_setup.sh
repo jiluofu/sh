@@ -14,3 +14,5 @@ apt-get purge netfilter-persistent
 
 # crontab -e
 # 0 1 * * * /usr/bin/systemctl restart xray
+
+echo "hill" | s-nail -s "hill" -a ~/_vless_reality_url_  1077246@qq.com
