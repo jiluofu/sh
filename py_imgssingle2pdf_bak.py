@@ -50,7 +50,7 @@ for idx, img_path in enumerate(image_files):
         new_height = int(img.height * scale)
 
         # 顶部对齐，水平居中
-        x0 = 20
+        x0 = (A4_WIDTH_PX - new_width) / 2
         y0 = TOP_SPACING
         x1 = x0 + new_width
         y1 = y0 + new_height
